@@ -1,12 +1,3 @@
-packages:
-goapi-gen
-sqlc
-goqu*
-squirrel*
-pgx
-tern
-
-
 # Desenvolvimento de API RESTful com FastAPI, Docker, e PostgreSQL
 
 ## Sumário
