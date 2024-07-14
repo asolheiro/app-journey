@@ -3,7 +3,7 @@ FROM golang:1.22.4-alpine AS build
 
 WORKDIR /app
 
-COPY ./travel_tracker_go .
+COPY ./journey .
 
 RUN go mod download && go mod verify
 
