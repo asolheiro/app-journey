@@ -97,29 +97,30 @@ O objetivo principal é criar um sistema eficiente que aborde os principais pont
 
 
 ## Estrutura de pastas e arquivos
-- **cmd:**
-    - **/journey/***journey.go*: Arquivo *main*. É ele quem irá gerar o binário para rodar o servidor da aplicação
-- **internal/:** Pasta principal do projeto
-   - **api/:** Diretório contendo a lógica da API assim como as suas especificações.
-        - **spec/:** Diretório de especificações OpenAPI
-            - */journey.gen.spec.go:* Arquivo gerado com toda a estrutura da API, métodos que devem ser implementados estão descritos na interface `ServerInterface` 
-            - */journey.spec.json:* Arquivo JSON que servirá de orientação para gerar a estrutura da API.
-        - */api.go:* Arquivo onde a lógica dos endpoints será implementada.
-    - **mailer/mailpit/:** Diretório para configuração do servidor mailer local.
-        - */mailpit.go:* Configuração do mailer escolhido.
-    - **pgstore/:** Diretório do driver de conexão do PostgreSQL, aqui serão gerados vários arquivos de código.
-        - **migrations/:** Arquivos descrevendo as migrações que serão aplicadas ao Banco de Dados utilizando o Tern.
-            - */tern.conf:* Descrição das configurações do Tern, como as variaveis de ambiente.
-        - **queries/:** Descrição das instruções que serão aplicadas no banco de dados em cada método.
-            - */queries.sql:* Instruções em formato SQL.
-        - */models.go:* Descrição dos modelos que serão levados ao banco de dados.
-        - */sqlc.yaml:* Especificações sobre como o SQLC trabalhará, quais ferramentas, tags, drivers e até quais tipos serão sobrescritos.
-- *compose.yaml:* Arquivo para orquestração dos containers de: aplicação, banco de dados, mailpit e pgadmin.
-- *compose-db.yaml:* Arquivo inicialização somente do container do banco de dados.
-- *Dockerfile:* Arquivo descrevendo as camadas da imagem Docker a ser buildada.
-- *go.mod & go.sum:* Gerenciadores de dependências do projeto.
-- *gen.go:* Arquivo de diretrizes do `go generate`.
-- *Makefile* Arquivo com tasks úteis para o projeto.
+- **/jouney/:** API Go
+  - **cmd:**
+      - **/journey/***journey.go*: Arquivo *main*. É ele quem irá gerar o binário para rodar o servidor da aplicação
+  - **internal/:** Pasta principal do projeto
+    - **api/:** Diretório contendo a lógica da API assim como as suas especificações.
+          - **spec/:** Diretório de especificações OpenAPI
+              - */journey.gen.spec.go:* Arquivo gerado com toda a estrutura da API, métodos que devem ser implementados estão descritos na interface `ServerInterface` 
+              - */journey.spec.json:* Arquivo JSON que servirá de orientação para gerar a estrutura da API.
+          - */api.go:* Arquivo onde a lógica dos endpoints será implementada.
+      - **mailer/mailpit/:** Diretório para configuração do servidor mailer local.
+          - */mailpit.go:* Configuração do mailer escolhido.
+      - **pgstore/:** Diretório do driver de conexão do PostgreSQL, aqui serão gerados vários arquivos de código.
+          - **migrations/:** Arquivos descrevendo as migrações que serão aplicadas ao Banco de Dados utilizando o Tern.
+              - */tern.conf:* Descrição das configurações do Tern, como as variaveis de ambiente.
+          - **queries/:** Descrição das instruções que serão aplicadas no banco de dados em cada método.
+              - */queries.sql:* Instruções em formato SQL.
+          - */models.go:* Descrição dos modelos que serão levados ao banco de dados.
+          - */sqlc.yaml:* Especificações sobre como o SQLC trabalhará, quais ferramentas, tags, drivers e até quais tipos serão sobrescritos.
+  - *compose.yaml:* Arquivo para orquestração dos containers de: aplicação, banco de dados, mailpit e pgadmin.
+  - *compose-db.yaml:* Arquivo inicialização somente do container do banco de dados.
+  - *Dockerfile:* Arquivo descrevendo as camadas da imagem Docker a ser buildada.
+  - *go.mod & go.sum:* Gerenciadores de dependências do projeto.
+  - *gen.go:* Arquivo de diretrizes do `go generate`.
+  - *Makefile* Arquivo com tasks úteis para o projeto.
 
 
 ## CLI do projeto
