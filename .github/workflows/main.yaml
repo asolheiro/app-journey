@@ -12,6 +12,6 @@ jobs:
     steps:
     - name: Checkout
       uses: actions/checkout@v4
-      
+
     - name: Build docker image
-      run: dockerr buildx build -t asolheiro/app-journey:latest .
+      run: docker buildx build -t asolheiro/app-journey:latest .
