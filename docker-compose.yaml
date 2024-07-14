@@ -1,0 +1,31 @@
+services:
+  postgres:
+    image: postgres:16.2-alpine3.19
+    ports:
+      - ${POSTGRES_PORT}:5432
+    env_file:
+      - .env
+    networks:
+      - journey
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  api:
+    build: .
+    container_name: api
+    ports:
+      - 8080:8080
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+
+    networks:
+      - journey
+
+networks:
+  journey:
+    driver: bridge
