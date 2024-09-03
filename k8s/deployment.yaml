@@ -1,0 +1,56 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: journey-deployment
+  labels: app journey
+
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: journey
+  template:
+    metadata:
+      labels:
+        app: journey
+    spec: 
+      containers:
+        - name: api-journey
+          image: asolheiro/app-journey:????
+          env:
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_user
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection 
+                  key: db_password
+            - name: POSTGRES_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_host
+            - name: POSTGRES_PORT
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_port
+            - name: POSTGRES_DB
+              valueFrom:
+                secretKeyRef:
+                  name: db-connection
+                  key: db_db
+          ports:
+            - containerPort: 8080
+          resources:
+            requests: 
+              cpu: 200m
+              memory: 128Mi
+            limits: 
+              cpus: 300m
+              memory: 128Mi
+

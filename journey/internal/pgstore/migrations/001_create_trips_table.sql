@@ -1,4 +1,3 @@
--- Write your migrate up statements here
 CREATE TABLE IF NOT EXISTS trips (
     "id"            uuid            PRIMARY KEY     NOT NULL    DEFAULT gen_random_uuid(),
     "destination"   VARCHAR(255)                    NOT NULL,
